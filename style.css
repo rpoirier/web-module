@@ -1,0 +1,71 @@
+html body { margin: 0px; padding: 0px; background: #00573d }
+.banner{
+	top: 0px;
+	width: 915px;
+	height: 160px;
+	padding: 5px;
+	background-color: #00412c;
+	margin: 0 auto;
+	z-index: 0;
+}
+.banner h1 {
+	display: inline-block;
+	font-size: 40pt;
+	color: #ffffff;
+	margin-top: 0.1em;
+	vertical-align: top;
+}
+.menu {
+	width: 915px;
+	height: 25px;
+	border: 5px solid #000000;
+	border-bottom: 0px solid;
+	background-color: #333333;
+	margin: 0 auto;
+	z-index: 0;
+}
+ul#menutext {
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0;
+}
+ul#menutext li {
+	display: inline;
+	padding: 0.5em 0.5em;
+	margin: 0 0.2em;
+}
+ul#menutext li a {
+	text-decoration: none;
+	color: #aaa;
+}
+ul#menutext li a:hover {
+	text-decoration: underline;
+}
+.roster {
+	width: 915px;
+	height: 100%;
+	background-color: #ffffff;
+	margin: 0 auto;
+	border:5px solid #000000;
+	z-index: 0;
+}
+.roster table {
+	border-spacing: 0; 
+}
+.roster th {
+	background-color: #00573d;
+	color: #ffffff;
+	text-align: left;
+}	
+.roster td {
+	padding: 0.2em;
+}
+.roster td:nth-child(1) {
+	text-align: right;
+}
+.roster tr:nth-child(2n) {
+	background-color: #d1d1d1;
+}
+.roster { 
+	padding: 0 0 1em 0; 
+}
