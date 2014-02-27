@@ -40,66 +40,42 @@
 					<th>Class</th>
 				</tr>";	
 			
-			while ($row=mysqli_fetch_array($result)) {
+			// Querys the sro DB table for creating html table below
+			$result=mysql_query("SELECT * FROM sro");
+			
+			while ($row=mysql_fetch_array($result)) {
 				
-				//echo "<tr>
-				//		<td>" $row['number'] "</td>";
+				echo "<tr>
+						<td>", $row['number'], "</td>
+						<td>", $row['name'], "</td>";
+				
+				if ($row['position']==2){
+					echo "<td>GK</td>";
+				} elseif ($row['position']==3){
+					echo "<td>D</td>";
+				} elseif ($row['position']==6){
+					echo "<td>F</td>";
+				} elseif ($row['position']==16){
+					echo "<td>M</td>";
+			 	}
+				
+				if ($row['year']==1){
+					echo "<td>Fr</td>";
+				} elseif ($row['year']==2){
+					echo "<td>So</td>";
+				} elseif ($row['year']==4){
+					echo "<td>Jr</td>";
+				} elseif ($row['year']==8){
+					echo "<td>Sr</td>";
+			 	} else {
+					echo "<td>Gr</td>";
+				}
+				
+
+				echo "</tr>";
+			
 			}
 			?>
-			<tr>
-				<td>1</td>
-				<td>Rondinelle DePaula  </td>
-				<td>GK</td>
-				<td>Fr</td>
-			</tr>	
-			<tr>
-				<td>6</td>
-				<td>Blaine Bolduc       </td>
-				<td>D</td>
-				<td>So</td>
-			</tr>	
-			<tr>
-				<td>7</td>
-				<td>Tom Sorrentino      </td>
-				<td>M</td>
-				<td>So</td>
-			</tr>	
-			<tr>
-				<td>8</td>
-				<td>Emiliano Cespedes   </td>
-				<td>M</td>
-				<td>Fr</td>
-			</tr>	
-			<tr>
-				<td>9</td>
-				<td>Colin Shea          </td>
-				<td>D</td>
-				<td>Sr</td>
-			</tr>	
-			<tr>
-				<td>10</td>
-				<td>Brett Smith         </td>
-				<td>D</td>
-				<td>Jr</td>
-			</tr>	
-			<tr>
-				<td>11</td>
-				<td>James David         </td>
-				<td>M</td>
-				<td>Jr</td>
-			</tr>	
-			<tr>
-				<td>12</td>
-				<td>Mauro Gimenez       </td>
-				<td>F</td>
-				<td>Fr</td>
-			</tr>	
-			<tr>
-				<td>13</td>
-				<td>Zachary Tracy       </td>
-				<td>D</td>
-				<td>So</td>
-			</tr>	
 			<tr>
 				<td>14</td>
 				<td>Steven Martinez     </td>
