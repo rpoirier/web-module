@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset=UTF-8>
+		<title>Fitchburg State University - Men's Soccer</title>
+		<link rel=stylesheet type=text/css href=style.css>
+	</head>
 	<body>
 	<?php include 'banner.php'; ?>
 	<?php include 'menu.php'; ?>
