@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=UTF-8>
+		<title>Soccer</title>
+		<link rel=stylesheet type=text/css href=temp.css>
+	</head>
+	<body>
+		<div class=banner>
+			<h1 align=center>Fitchburg State University</h1>
+		</div>
+		<div class=menu>
+			<ul id=menutext>
+			<li>|</li>
+			<li><a href=index.php><b>Home</b></a></li>
+			<li>|</li>
+			<li><a href=roster.php><b>Roster</b></a></li>
+			<li>|</li> 
+			<li><a href=schedule.php><b>Schedule</b></a></li>
+			<li>|</li>
+			<li><a href=stats.php><b>Statistics</b></a></li>
+			<li>|</li>
+			</ul>
+		</div>
+		<div class=roster>
+			<p align=center><b>Fitchburg State Men's Soccer Roster</b></p>
+			
+
+<form action="import.php" method="post" enctype="multipart/form-data">
+	<label for="file">Filename:</label>
+	<input type="file" name="file" id="file"><br>
+	<input type="submit" name="submit" value="Submit">
+</form>
+		</div>
+	</body>
+</html>
+
