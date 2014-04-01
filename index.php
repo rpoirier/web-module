@@ -9,7 +9,8 @@
 		<?php include 'banner.php'; ?>
 		<?php include 'mainmenu.php'; ?>
 		<div class=content>
-		
+		<!--this is a placeholder-->
+		<p>&nbsp;</p>
 		</div>
 		<?php include 'footer.php'; ?>	
 	</body>

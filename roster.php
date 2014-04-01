@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<body>
-	<?php include 'header.php'; ?>
+	<?php include 'banner.php'; ?>
+	<?php include 'menu.php'; ?>
 		<div class=content>
 			<p align=center><b>Fitchburg State Men's Soccer Roster</b></p>
 			
