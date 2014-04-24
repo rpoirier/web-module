@@ -47,7 +47,7 @@ ul#menutext li {
 }
 ul#menutext li a {
 	text-decoration: none;
-	color: #aaa;
+	color: #cdcdcd;
 }
 ul#menutext li a:hover {
 	text-decoration: underline;
@@ -78,6 +78,18 @@ ul#sportslist {
 }
 .content tr:nth-child(2n) {
 	background-color: #d1d1d1;
+}
+button {
+	background-color: #00573d;
+}
+#team_profile {
+	display: block;
+}
+#season {
+	display: none;
+}
+#game_log {
+	display: none;
 }
 .footer {
 	width: 925px;
