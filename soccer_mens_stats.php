@@ -4,12 +4,12 @@
 		<meta charset=UTF-8>
 		<title>Fitchburg State University - Men's Soccer</title>
 		<link rel=stylesheet type=text/css href=style.css>
-		<script>
+		<script type="text/javascript">
 			var contentDivs = [ 'team_profile', 'season', 'game_log' ];
 
 			function select_content_div(id) {
 				contentDivs.forEach(function(element) {
-					var div = document.getElementByID(element);
+					var div = document.getElementById(element);
 					if(div)
 						div.style.display = 'none';
 				});
@@ -24,36 +24,50 @@
 		<?php include 'banner.php'; ?>
 		<?php include 'soccer_mens_menu.php'; ?>
 		<div class=content>
-			<p align=center><b>Fitchburg State Men's Soccer Statistics</b></p>
+		<!--	<p align=center><b>Fitchburg State Men's Soccer Statistics</b></p>	-->
 
-			<center><table id=stats_menu>
+		<center><p><table id=stats_menu>
 			<tr>
-				<td><button onclick="select_content_div(team_profile)"><b>Team Profile</b></button></td>
-				<td><button onclick="select_content_div(season)"><b>Season</b></button></td>
-				<td><button onclick="select_content_div(game_log)"><b>Games</b></button></td>
+				<td><button onclick="select_content_div('team_profile')"><b>Team Profile</b></button></td>
+				<td><button onclick="select_content_div('season')"><b>Season</b></button></td>
+				<td><button onclick="select_content_div('game_log')"><b>Games</b></button></td>
 			</tr>
-			</table></center>
-			<p>&nbsp;</p>
+			</table></p></center>
+	
+		<?php
+		require_once 'db_login.php';
+		$db_server = mysql_connect($db_hostname, $db_username, $db_password);
+		if (!$db_server) die("Unable to connect to MySQL: " . mysql_error());
+		mysql_select_db($db_database) or die("Unable to select database: " . mysql_error());
 
+
+			//team profile
+
+
+			echo"
 			<div id=team_profile>
-				<center><table>
+				<p><center><table id=team_overview>
 				<tr>
-					<th>&nbsp;Games</th>
-					<th>&nbsp;Goals</th>
-					<th>&nbsp;Goals-Per Game</th>
-					<th>&nbsp;Shot %</th>
-					<th>&nbsp;Shots-Per-Game</th>
-					<th>&nbsp;GAA&nbsp;</th>
+					<th>Games</th>
+					<th>Goals</th>
+					<th>Goals-Per Game</th>
+					<th>Shot %</th>
+					<th>Shots-Per-Game</th>
+					<th>GAA</th>
 				</tr>
 				<tr>
-					<td><center>19</center></td>
-					<td><center>16</center></td>
-					<td><center>0.8</center></td>
-					<td><center>0.066</center></td>
-					<td><center>12.7</center></td>
-					<td><center>0.78</center></td>
+					<td>19</td>
+					<td>16</td>
+					<td>0.8</td>
+					<td>0.066</td>
+					<td>12.7</td>
+					<td>0.78</td>
 				</tr>
 				</table>
+				</p>";
+				
+				echo "
+				<p>
 				<table>
 				<tr>
 					<th>Team Statistics</th>
@@ -87,15 +101,88 @@
 					<td>Red cards</td>
 					<td>2</td>
 				</tr>
-				</table></center>
+				</table></center></p>";
 
+			
+
+			echo "
 			</div>
 			<div id=season>
-				<p>test season test</p>
-			</div>
+			<center><p><table>
+				<tr>
+					<th>No.</th>
+					<th>Name</th>
+					<th>Yr</th>
+					<th>Pos</th>
+					<th>G</th>
+					<th>A</th>
+					<th>SH</th>
+					<th>SH%</th>
+					<th>SOG</th>
+					<th>SOG%</th>
+					<th>YC</th>
+					<th>RC</th>
+				</tr>";
+
+				$j=mysql_query("SELECT id_players FROM Players SORT BY id_players DESC LIMIT 1");
+
+				
+			for ($i=1; $i < $j; $i++) {
+				
+			$result=mysql_query("SELECT Players.id_players, Players.number, Players.name, Players.position, Players.year, Stats.goals, Stats.assists, Stats.shots, Stats.shots_on_goal, Stats.saves, Stats.yellow_cards, Stats.red_cards, Stats.fouls, Stats.offsides, Stats.corners FROM Players INNER JOIN Stats ON Player.number = Stats.player_num WHERE Players.id_players=$i");
+				echo "
+				<tr>
+					<td>", $row['number'], "</td>
+					<td>", $row['name'], "</td>";
+
+				if ($row['position']==2){
+					echo "<td>GK</td>";
+				} elseif ($row['position']==3){
+					echo "<td>D</td>";
+				} elseif ($row['position']==6){
+					echo "<td>F</td>";
+				} elseif ($row['position']==16){
+					echo "<td>M</td>";
+			 	}
+				
+				if ($row['year']==1){
+					echo "<td>Fr</td>";
+				} elseif ($row['year']==2){
+					echo "<td>So</td>";
+				} elseif ($row['year']==4){
+					echo "<td>Jr</td>";
+				} elseif ($row['year']==8){
+					echo "<td>Sr</td>";
+				} elseif ($row['year']==16){
+					echo "<td>Gr</td>";
+			 	} else {
+					echo "<td>  </td>";
+				}
+					
+				
+			echo "			
+					
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>";
+			}
+				echo "
+				</tr>
+				</table></p></center>";
+			echo "
+			</div>";
+			echo"
 			<div id=game_log>
 				<p>test game log test</p>
-			</div>
+			</div>";
+
+		mysql_close($db_server);	
+		?>			
 
 		</div>
 		<?php include 'footer.php'; ?>
