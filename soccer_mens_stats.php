@@ -124,36 +124,35 @@
 					<th>RC</th>
 				</tr>";
 
-				$j=mysql_query("SELECT id_players FROM Players SORT BY id_players DESC LIMIT 1");
+				$j=mysql_query("SELECT id_players FROM sport.Players ORDER BY id_players DESC LIMIT 1");
 
-				
 			for ($i=1; $i < $j; $i++) {
 				
 			$result=mysql_query("SELECT Players.id_players, Players.number, Players.name, Players.position, Players.year, Stats.goals, Stats.assists, Stats.shots, Stats.shots_on_goal, Stats.saves, Stats.yellow_cards, Stats.red_cards, Stats.fouls, Stats.offsides, Stats.corners FROM Players INNER JOIN Stats ON Player.number = Stats.player_num WHERE Players.id_players=$i");
 				echo "
 				<tr>
-					<td>", $row['number'], "</td>
-					<td>", $row['name'], "</td>";
+					<td>", $result['number'], "</td>
+					<td>", $result['name'], "</td>";
 
-				if ($row['position']==2){
+				if ($result['position']==2){
 					echo "<td>GK</td>";
-				} elseif ($row['position']==3){
+				} elseif ($result['position']==3){
 					echo "<td>D</td>";
-				} elseif ($row['position']==6){
+				} elseif ($result['position']==6){
 					echo "<td>F</td>";
-				} elseif ($row['position']==16){
+				} elseif ($result['position']==16){
 					echo "<td>M</td>";
 			 	}
 				
-				if ($row['year']==1){
+				if ($result['year']==1){
 					echo "<td>Fr</td>";
-				} elseif ($row['year']==2){
+				} elseif ($result['year']==2){
 					echo "<td>So</td>";
-				} elseif ($row['year']==4){
+				} elseif ($result['year']==4){
 					echo "<td>Jr</td>";
-				} elseif ($row['year']==8){
+				} elseif ($result['year']==8){
 					echo "<td>Sr</td>";
-				} elseif ($row['year']==16){
+				} elseif ($result['year']==16){
 					echo "<td>Gr</td>";
 			 	} else {
 					echo "<td>  </td>";
@@ -165,14 +164,15 @@
 					<td></td>
 					<td></td>
 					<td></td>
+					<td>0%</td>
+					<td></td>
+					<td>0%</td>
 					<td></td>
 					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>";
+					
+				</tr>";
 			}
 				echo "
-				</tr>
 				</table></p></center>";
 			echo "
 			</div>";
